@@ -29,20 +29,20 @@ class ProyekResource extends Resource
         return $form
             ->schema([
                 Forms\Components\TextInput::make('name')->autocomplete('off')
-                    ->rules('required'),
+                    ->rules('required')->columnSpan('full'),
                 Forms\Components\TextInput::make('location')->autocomplete('off')
-                    ->rules('required'),
+                    ->rules('required')->columnSpan('full'),
                 Forms\Components\DatePicker::make('start_date')
                     ->rules('required'),
                 Forms\Components\DatePicker::make('end_date')
                     ->rules('required'),
                 Forms\Components\TextInput::make('budget')->autocomplete('off')
-                    ->rules('required')->numeric(),
+                    ->rules('required')->numeric()->columnSpan('full'),
                 Forms\Components\Radio::make('is_done')->label('Status')
                     ->options([
                         '0' => 'On Progress',
                         '1' => 'Done',
-                    ]),
+                    ])->columnSpan('full'),
             ]);
     }
 
@@ -52,12 +52,13 @@ class ProyekResource extends Resource
             ->columns([
                 Tables\Columns\TextColumn::make('index')
                     ->label('#')
+                    ->weight('bold')
                     ->rowIndex(),
                 Tables\Columns\TextColumn::make('name')->searchable(),
-                Tables\Columns\TextColumn::make('location')->searchable(),
-                Tables\Columns\TextColumn::make('start_date')->searchable(),
-                Tables\Columns\TextColumn::make('end_date')->searchable(),
-                Tables\Columns\TextColumn::make('budget')->searchable()->numeric(),
+                Tables\Columns\TextColumn::make('location')->searchable()->color('success'),
+                Tables\Columns\TextColumn::make('start_date')->date('d F Y'),
+                Tables\Columns\TextColumn::make('end_date')->date('d F Y'),
+                Tables\Columns\TextColumn::make('budget')->searchable()->money('IDR')->color('info'),
                 Tables\Columns\IconColumn::make('is_done')
                     ->color(fn(string $state): string => match ($state) {
                         $state => !empty($state) ? 'success' : 'danger',
