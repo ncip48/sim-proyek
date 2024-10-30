@@ -18,8 +18,11 @@ class ProyekResource extends Resource
     protected static ?string $model = Proyek::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-briefcase';
+    protected static ?string $activeNavigationIcon = 'heroicon-s-briefcase';
 
     protected static ?string $navigationLabel = 'Proyek';
+
+    // protected static ?string $navigationGroup = 'Gudang';
 
     public static function form(Form $form): Form
     {
