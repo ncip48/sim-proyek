@@ -86,7 +86,9 @@ class StockResource extends Resource
                 // Tables\Actions\EditAction::make(),
                 Tables\Actions\DeleteAction::make()
                     ->visible(fn(Model $record) => in_array($record->type, ['in', 'out'])),
-            ]);
+            ])
+            ->poll('10s')
+            ->defaultSort('id', 'desc');
         // ->bulkActions([
         //     Tables\Actions\BulkActionGroup::make([
         //         Tables\Actions\DeleteBulkAction::make(),
