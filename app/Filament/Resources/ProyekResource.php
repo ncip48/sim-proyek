@@ -29,15 +29,15 @@ class ProyekResource extends Resource
         return $form
             ->schema([
                 Forms\Components\TextInput::make('name')->autocomplete('off')
-                    ->rules('required')->columnSpan('full'),
+                    ->rules('required')->columnSpan('full')->autocomplete('off'),
                 Forms\Components\TextInput::make('location')->autocomplete('off')
-                    ->rules('required')->columnSpan('full'),
+                    ->rules('required')->columnSpan('full')->autocomplete('off'),
                 Forms\Components\DatePicker::make('start_date')
                     ->rules('required'),
                 Forms\Components\DatePicker::make('end_date')
                     ->rules('required'),
-                Forms\Components\TextInput::make('budget')->autocomplete('off')
-                    ->rules('required')->numeric()->columnSpan('full')->prefix('Rp'),
+                Forms\Components\TextInput::make('budget')
+                    ->rules('required')->numeric()->columnSpan('full')->prefix('Rp')->autocomplete('off'),
                 Forms\Components\Radio::make('is_done')->label('Status')
                     ->options([
                         '0' => 'On Progress',

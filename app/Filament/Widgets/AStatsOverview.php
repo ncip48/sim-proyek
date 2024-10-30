@@ -10,7 +10,7 @@ use App\Models\Proyek;
 
 class AStatsOverview extends BaseWidget
 {
-    protected static ?string $pollingInterval = '1s';
+    protected static ?string $pollingInterval = '5s';
 
     protected function getStats(): array
     {

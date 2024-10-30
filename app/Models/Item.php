@@ -17,4 +17,18 @@ class Item extends Model
     {
         return $this->hasMany(Stock::class);
     }
+
+    public function actual_stock()
+    {
+        $initial = Stock::where('item_id', $this->id)->where('type', 'initial')->first();
+        $in = Stock::where('item_id', $this->id)->where('type', 'in')->first();
+        $out = Stock::where('item_id', $this->id)->where('type', 'out')->first();
+
+        $initialStock = $initial ? $initial->qty : 0;
+        $inStock = $in ? $in->qty : 0;
+        $outStock = $out ? $out->qty : 0;
+        $totalStock = $initialStock + $inStock - $outStock;
+
+        return $totalStock;
+    }
 }

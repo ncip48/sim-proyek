@@ -9,7 +9,7 @@ class ProjectChart extends ChartWidget
 {
     protected static ?string $heading = 'Status Proyek';
 
-    protected static ?string $pollingInterval = '1s';
+    protected static ?string $pollingInterval = '5s';
 
     protected static ?string $maxHeight = '300px';
 
@@ -60,12 +60,10 @@ class ProjectChart extends ChartWidget
                     'data' => [$ongoing, $complete],
                     'backgroundColor' => [
                         'rgba(255, 99, 132, 0.2)',
-                        'rgba(255, 159, 64, 0.2)',
                         'rgba(255, 205, 86, 0.2)',
                     ],
                     'borderColor' => [
                         'rgb(255, 99, 132)',
-                        'rgb(255, 159, 64)',
                         'rgb(255, 205, 86)',
                     ],
                 ],

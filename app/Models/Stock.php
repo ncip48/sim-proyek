@@ -6,7 +6,6 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Notifications\Notifiable;
-use SebastianBergmann\CodeCoverage\Report\Xml\Project;
 
 class Stock extends Model
 {
@@ -21,6 +20,6 @@ class Stock extends Model
 
     public function project()
     {
-        return $this->belongsTo(Project::class);
+        return $this->belongsTo(Proyek::class);
     }
 }
