@@ -62,6 +62,9 @@ class StockResource extends Resource
                     })
                     ->label('Proyek')->searchable(),
                 Tables\Columns\TextColumn::make('qty')
+                    ->getStateUsing(function (Model $record) {
+                        return $record->qty;
+                    })
                     ->numeric(),
                 Tables\Columns\TextColumn::make('type')
                     ->badge()
