@@ -29,9 +29,8 @@ class AppServiceProvider extends ServiceProvider
                     'id' => 'Indonesian',
                 ])
                 ->flags([
-                    'ar' => asset('flags/saudi-arabia.svg'),
-                    'fr' => asset('flags/france.svg'),
-                    'en' => asset('flags/usa.svg'),
+                    'en' => asset('img/flags/en.png'),
+                    'id' => asset('img/flags/id.png'),
                 ])
                 // ->flagsOnly()
                 ->circular()
