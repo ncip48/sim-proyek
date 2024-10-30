@@ -10,4 +10,6 @@ class Dashboard extends BaseDashboard
     protected static ?string $activeNavigationIcon = 'heroicon-s-home';
 
     protected static string $routePath = '';
+
+    protected static ?string $navigationGroup = 'Dashboard';
 }

@@ -2,6 +2,7 @@
 
 namespace App\Providers\Filament;
 
+use App\Filament\Widgets\ProjectChart;
 use App\Filament\Widgets\StatsOverview;
 use Filament\Http\Middleware\Authenticate;
 use Filament\Http\Middleware\DisableBladeIconComponents;
@@ -25,6 +26,8 @@ class AdminPanelProvider extends PanelProvider
     public function panel(Panel $panel): Panel
     {
         return $panel
+            ->collapsibleNavigationGroups(false)
+            // ->sidebarCollapsibleOnDesktop()
             ->default()
             ->id('admin')
             ->path('')
@@ -45,6 +48,7 @@ class AdminPanelProvider extends PanelProvider
                 // Widgets\AccountWidget::class,
                 // Widgets\FilamentInfoWidget::class,
                 // StatsOverview::class,
+                // ProjectChart::class,
             ])
             ->middleware([
                 EncryptCookies::class,

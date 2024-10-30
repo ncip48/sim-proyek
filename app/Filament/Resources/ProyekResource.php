@@ -22,7 +22,7 @@ class ProyekResource extends Resource
 
     protected static ?string $navigationLabel = 'Proyek';
 
-    // protected static ?string $navigationGroup = 'Gudang';
+    protected static ?string $navigationGroup = 'Master';
 
     public static function form(Form $form): Form
     {
@@ -37,7 +37,7 @@ class ProyekResource extends Resource
                 Forms\Components\DatePicker::make('end_date')
                     ->rules('required'),
                 Forms\Components\TextInput::make('budget')->autocomplete('off')
-                    ->rules('required')->numeric()->columnSpan('full'),
+                    ->rules('required')->numeric()->columnSpan('full')->prefix('Rp'),
                 Forms\Components\Radio::make('is_done')->label('Status')
                     ->options([
                         '0' => 'On Progress',

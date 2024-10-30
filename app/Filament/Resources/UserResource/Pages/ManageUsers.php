@@ -12,6 +12,8 @@ class ManageUsers extends ManageRecords
 
     protected static string $resource = UserResource::class;
 
+    //set the inner
+
     protected function getHeaderActions(): array
     {
         return [
