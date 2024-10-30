@@ -111,12 +111,4 @@ class UserResource extends Resource
             'index' => Pages\ManageUsers::route('/'),
         ];
     }
-
-    public static function getEloquentQuery(): Builder
-    {
-        return parent::getEloquentQuery()
-            ->withoutGlobalScopes([
-                SoftDeletingScope::class,
-            ]);
-    }
 }
