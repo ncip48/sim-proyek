@@ -21,4 +21,9 @@ class Proyek extends Model
         'budget',
         'is_done'
     ];
+
+    public function stocks()
+    {
+        return $this->hasMany(Stock::class, 'id', 'project_id');
+    }
 }

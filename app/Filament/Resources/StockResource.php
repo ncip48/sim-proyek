@@ -103,6 +103,7 @@ class StockResource extends Resource
                     ->visible(fn(Model $record) => in_array($record->type, ['in', 'out'])),
             ])
             ->poll('10s')
+            ->striped()
             ->defaultSort('id', 'desc');
         // ->bulkActions([
         //     Tables\Actions\BulkActionGroup::make([

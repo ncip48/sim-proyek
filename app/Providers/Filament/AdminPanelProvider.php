@@ -32,6 +32,7 @@ class AdminPanelProvider extends PanelProvider
             ->default()
             ->id('admin')
             ->path('')
+            // ->login(App\Filament\Pages\Auth\Login::class)
             ->login()
             ->spa()
             ->font('Poppins')
