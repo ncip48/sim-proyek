@@ -22,6 +22,7 @@ class ManageStocks extends ManageRecords
         return [
             Actions\Action::make('Stock In')
                 ->label('Stock In')
+                ->icon('heroicon-s-arrow-trending-down')
                 ->form([
                     Select::make('item_id')
                         ->label('Item')
@@ -45,6 +46,7 @@ class ManageStocks extends ManageRecords
                 }),
             Actions\Action::make('Stock Out')
                 ->color('danger')
+                ->icon('heroicon-s-arrow-trending-up')
                 ->label('Stock Out')
                 ->form([
                     Select::make('item_id')
@@ -67,7 +69,7 @@ class ManageStocks extends ManageRecords
                 ->action(function (array $data): void {
                     Stock::create([
                         'item_id' => $data['item_id'],
-                        'proyek_id' => $data['proyek_id'],
+                        'project_id' => $data['proyek_id'],
                         'qty' => $data['qty'],
                         'type' => 'out',
                         'date' => date('Y-m-d')
