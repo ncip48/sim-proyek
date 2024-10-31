@@ -8,7 +8,7 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach ($items as $product)
+                @forelse ($items as $product)
                     <tr class="">
                         <td class="text-sm ps-3 gap-y-1 px-3 py-4">
                             {{ $product->item->name }}
@@ -17,7 +17,13 @@
                             {{ $product->qty }}
                         </td>
                     </tr>
-                @endforeach
+                @empty
+                    <tr>
+                        <td colspan="2">
+                            <x-filament-tables::empty-state heading="No Items" icon="heroicon-o-x-mark" />
+                        </td>
+                    </tr>
+                @endforelse
             </tbody>
         </table>
     </div>

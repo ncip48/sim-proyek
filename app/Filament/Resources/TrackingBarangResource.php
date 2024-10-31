@@ -8,6 +8,7 @@ use App\Models\Stock;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
+use Filament\Tables\Actions\Action;
 use Filament\Tables\Table;
 use Illuminate\View\View;
 
@@ -47,11 +48,18 @@ class TrackingBarangResource extends Resource
             ->actions([
                 // Tables\Actions\EditAction::make(),
                 Tables\Actions\ViewAction::make()
+                    ->color('primary')
                     ->label('Lihat')
+                    ->modalHeading('Riwayat')
                     ->modalContent(fn(Proyek $record): View => view(
                         'tracking_barang',
                         ['record' => $record, 'items' => Stock::where('project_id', $record->id)->get()],
                     )),
+                // Tables\Actions\Action::make('Edit Registrations')
+                //     ->modalContent(fn(Action $action, Proyek $record): View => view(
+                //         'filament.widgets.details',
+                //         ['action' => $action, 'record' => $record],
+                //     ))->slideOver()->modalSubmitAction(false)->modalCancelAction(false),
             ])
             ->striped();
     }
