@@ -70,12 +70,12 @@ class ItemResource extends Resource
                 Tables\Columns\TextColumn::make('stock')
                     ->getStateUsing(function (Model $record) {
                         $initial = Stock::where('item_id', $record->id)->where('type', 'initial')->first();
-                        $in = Stock::where('item_id', $record->id)->where('type', 'in')->first();
-                        $out = Stock::where('item_id', $record->id)->where('type', 'out')->first();
+                        $in = Stock::where('item_id', $record->id)->where('type', 'in')->sum('qty');
+                        $out = Stock::where('item_id', $record->id)->where('type', 'out')->sum('qty');
 
                         $initialStock = $initial ? $initial->qty : 0;
-                        $inStock = $in ? $in->qty : 0;
-                        $outStock = $out ? $out->qty : 0;
+                        $inStock = $in ?? 0;
+                        $outStock = $out ?? 0;
                         $totalStock = $initialStock + $inStock - $outStock;
                         return $totalStock;
                     })

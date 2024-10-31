@@ -38,14 +38,12 @@ class UserResource extends Resource
                     ->validationMessages([
                         'required' => 'The :attribute is required.',
                     ])
-                    ->columnSpan('full')
                     ->markAsRequired(),
                 Forms\Components\TextInput::make('email')
                     ->rules(['required', 'email'])
                     ->maxLength(255)
                     ->placeholder(__('Email'))
                     ->autocomplete('off')
-                    ->columnSpan('full')
                     ->markAsRequired(),
                 Forms\Components\TextInput::make('password')
                     ->password()
@@ -56,7 +54,6 @@ class UserResource extends Resource
                         fn($state) => filled($state)
                     )
                     ->required(fn(string $context): bool => $context === 'create')
-                    ->columnSpan('full')
                     ->placeholder(__('Password')),
                 Forms\Components\Select::make('role')
                     ->searchable()
@@ -66,9 +63,9 @@ class UserResource extends Resource
                         '1' => 'Super Admin',
                         '2' => 'Admin',
                     ])
-                    ->columnSpan('full')
                     ->label('Role')
-            ]);
+            ])
+            ->columns(1);
     }
 
     public static function table(Table $table): Table
