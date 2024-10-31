@@ -39,7 +39,7 @@ class TrackingBarangResource extends Resource
                     ->label('#')
                     ->weight('bold')
                     ->rowIndex(),
-                Tables\Columns\TextColumn::make('name')->searchable(),
+                Tables\Columns\TextColumn::make('name')->searchable()->label('Proyek'),
                 Tables\Columns\TextColumn::make('location')->searchable()->color('success'),
             ])
             ->filters([
