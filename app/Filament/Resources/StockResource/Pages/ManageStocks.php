@@ -54,7 +54,7 @@ class ManageStocks extends ManageRecords
                         ->options(Item::query()->pluck('name', 'id'))
                         ->rules('required')
                         ->searchable(),
-                    Select::make('proyek_id')
+                    Select::make('project_id')
                         ->label('Proyek')
                         ->options(Proyek::query()->pluck('name', 'id'))
                         ->rules('required')
@@ -69,7 +69,7 @@ class ManageStocks extends ManageRecords
                 ->action(function (array $data): void {
                     Stock::create([
                         'item_id' => $data['item_id'],
-                        'project_id' => $data['proyek_id'],
+                        'project_id' => $data['project_id'],
                         'qty' => $data['qty'],
                         'type' => 'out',
                         'date' => date('Y-m-d')
