@@ -9,6 +9,7 @@ use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
+use Filament\Tables\Grouping\Group;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
@@ -81,6 +82,17 @@ class StockResource extends Resource
                     ->label('Type'),
                 Tables\Columns\TextColumn::make('date')
                     ->date('d F Y'),
+            ])
+            ->groups([
+                Group::make('type')
+                    ->getTitleFromRecordUsing(fn(Stock $record): string => ucfirst($record->type))
+                    ->label('Type'),
+                Group::make('item_id')
+                    ->getTitleFromRecordUsing(fn(Stock $record): string => ucfirst($record->item->name))
+                    ->label('Item'),
+                Group::make('project_id')
+                    ->getTitleFromRecordUsing(fn(Stock $record): string => ucfirst($record->project->name ?? "-"))
+                    ->label('Proyek'),
             ])
             ->filters([
                 //
